@@ -32,3 +32,4 @@ repos:
           - pydantic-settings
           - types-passlib
           - types-python-jose
+        args: ["--python-version=3.10"]

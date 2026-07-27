@@ -1,6 +1,10 @@
 """Pagination utility shared across list endpoints."""
 
+from typing import Generic, TypeVar
+
 from pydantic import BaseModel, Field
+
+T = TypeVar("T")
 
 
 class PaginationParams(BaseModel):
@@ -8,7 +12,7 @@ class PaginationParams(BaseModel):
     offset: int = Field(default=0, ge=0)
 
 
-class PaginatedResponse[T](BaseModel):
+class PaginatedResponse(BaseModel, Generic[T]):
     items: list[T]
     total: int
     limit: int
